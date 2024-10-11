@@ -101,7 +101,7 @@ function divideNums(num1, num2) {
 }
 
 function handleNumInput(num) {
-  if (operator === null) {
+  if (operator === null || operator === "=") {
     if (firstNum == null) {
       if (num === ".") {
         firstNum = "0."; //ad zero before decimal if "." is first input
@@ -122,6 +122,7 @@ function handleNumInput(num) {
     //if user has selected an operator create second number
     if (secondNum == null) {
       secondNum = num;
+      console.log("second num" + secondNum);
     } else if (secondNum !== null) {
       //append second number
       secondNum += num;
