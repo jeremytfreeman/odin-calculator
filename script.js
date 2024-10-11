@@ -82,8 +82,13 @@ function multiplyNums(num1, num2) {
   //convert strings to numbers
   num1 = Number(num1);
   num2 = Number(num2);
+  console.log(typeof num1 + num1);
+  console.log(typeof num2 + num2);
+
   //do the operation
   result = num1 * num2;
+  result = result.toFixed(5);
+  console.log("x" + result);
   //reset number variables
   firstNum = null;
   secondNum = null;
