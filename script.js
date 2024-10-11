@@ -61,6 +61,7 @@ function addNums(num1, num2) {
   //reset number variables
   firstNum = null;
   secondNum = null;
+  operator = null;
   return result;
 }
 
@@ -73,6 +74,7 @@ function subtractNums(num1, num2) {
   //reset number variables
   firstNum = null;
   secondNum = null;
+  operator = null;
   return result;
 }
 
@@ -85,6 +87,7 @@ function multiplyNums(num1, num2) {
   //reset number variables
   firstNum = null;
   secondNum = null;
+  operator = null;
   return result;
 }
 
@@ -97,6 +100,7 @@ function divideNums(num1, num2) {
   //reset number variables
   firstNum = null;
   secondNum = null;
+  operator = null;
   return result;
 }
 
@@ -141,6 +145,7 @@ function handleOperatorInput(op) {
         displayInput.innerHTML = result;
         operator = null;
         console.log("result " + result);
+        console.log(operator);
       } else if (operator == "-") {
         result = subtractNums(firstNum, secondNum);
         firstNum = result;
