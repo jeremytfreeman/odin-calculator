@@ -39,6 +39,7 @@ button:hover {
   text-align: right;
   margin-bottom: 12px;
   width: 400px;
+  overflow: hidden;
 }
 
 h1 {
@@ -59,6 +60,6 @@ h1 {
 }
 
 #clearAll:hover {
-  background-color: purple;
+  background-color: darkviolet;
   color: white;
 }
