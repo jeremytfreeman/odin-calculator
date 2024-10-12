@@ -20,18 +20,16 @@ opBtn.forEach((button) => {
   button.addEventListener("click", () => handleOperatorInput(button.innerText));
 });
 
+//get other buttons
 const decbtn = document.getElementById("decbtn");
 const clearAllBtn = document.getElementById("clearAll");
 const percentbtn = document.getElementById("percentbtn");
 const negbtn = document.getElementById("negativebtn");
 
-//operator event handlers
+//other event handlers
 negbtn.addEventListener("click", () => handleNegInput());
 decbtn.addEventListener("click", () => handleNumInput("."));
-
-//percent button
 percentbtn.addEventListener("click", () => handlePercentInput());
-//clear all button
 clearAllBtn.addEventListener("click", () => clearAll());
 
 function addNums(num1, num2) {
