@@ -1,5 +1,5 @@
 body {
-  font-family: monospace;
+  font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -32,10 +32,10 @@ button:hover {
 }
 
 #inputBox {
-  height: 54px;
-  background-color: rgb(43, 24, 51);
+  height: 76px;
+  background-color: rgb(24, 35, 51);
   color: white;
-  padding: 16px;
+  padding: 8px;
   text-align: right;
   margin-bottom: 12px;
   width: 400px;
@@ -45,6 +45,17 @@ button:hover {
 h1 {
   font-size: 40px;
   color: lightpink;
+  line-height: 48px;
+  margin: 0;
+  font-weight: normal;
+}
+
+h4 {
+  font-size: 16px;
+  color: slategrey;
+  line-height: 16px;
+  margin: 0;
+  font-weight: normal;
 }
 
 .op {
