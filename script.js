@@ -5,6 +5,7 @@ let result = null;
 
 //get DOM elements
 const displayInput = document.getElementById("displayInput");
+const displayFull = document.getElementById("displayFull");
 const btn1 = document.getElementById("btn1");
 const btn2 = document.getElementById("btn2");
 const btn3 = document.getElementById("btn3");
@@ -85,9 +86,8 @@ function multiplyNums(num1, num2) {
   console.log(typeof num1 + num1);
   console.log(typeof num2 + num2);
 
-  //do the operation
-  result = num1 * num2;
-  result = result.toFixed(5);
+  //do the operation, X each by 10 then divide for floating point accuracy
+  result = (num1 * 10 * (num2 * 10)) / 100;
   console.log("x" + result);
   //reset number variables
   firstNum = null;
@@ -125,6 +125,7 @@ function handleNumInput(num) {
       firstNum += num;
     }
     displayInput.innerHTML = firstNum;
+    displayFull.innerHTML = firstNum;
     console.log("first number: " + firstNum);
     console.log("result: " + result);
   } else {
