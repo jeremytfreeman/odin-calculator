@@ -2,6 +2,7 @@ let firstNum = null;
 let secondNum = null;
 let operator = null;
 let result = null;
+let fullMath = null;
 
 //get DOM elements
 const displayInput = document.getElementById("displayInput");
@@ -125,7 +126,8 @@ function handleNumInput(num) {
       firstNum += num;
     }
     displayInput.innerHTML = firstNum;
-    displayFull.innerHTML = firstNum;
+    fullMath = firstNum;
+    displayFull.innerHTML = fullMath;
     console.log("first number: " + firstNum);
     console.log("result: " + result);
   } else {
@@ -138,6 +140,8 @@ function handleNumInput(num) {
       secondNum += num;
     }
     displayInput.innerHTML = secondNum;
+    fullMath = fullMath.concat(num);
+    displayFull.innerHTML = fullMath;
     console.log("second number: " + secondNum);
   }
 }
@@ -149,6 +153,8 @@ function handleOperatorInput(op) {
         result = addNums(firstNum, secondNum);
         firstNum = result;
         displayInput.innerHTML = result;
+        fullMath = fullMath.concat("=" + result);
+        displayFull.innerHTML = fullMath;
         operator = null;
         console.log("result " + result);
         console.log(operator);
@@ -156,18 +162,24 @@ function handleOperatorInput(op) {
         result = subtractNums(firstNum, secondNum);
         firstNum = result;
         displayInput.innerHTML = result;
+        fullMath = fullMath.concat("=" + result);
+        displayFull.innerHTML = fullMath;
         operator = null;
         console.log("result " + result);
       } else if (operator == "*") {
         result = multiplyNums(firstNum, secondNum);
         firstNum = result;
         displayInput.innerHTML = result;
+        fullMath = fullMath.concat("=" + result);
+        displayFull.innerHTML = fullMath;
         operator = null;
         console.log("result " + result);
       } else if (operator == "/") {
         result = divideNums(firstNum, secondNum);
         firstNum = result;
         displayInput.innerHTML = result;
+        fullMath = fullMath.concat("=" + result);
+        displayFull.innerHTML = fullMath;
         operator = null;
         console.log("result " + result);
       }
@@ -175,6 +187,8 @@ function handleOperatorInput(op) {
   } else {
     operator = op;
     console.log("operator: " + operator);
+    fullMath = fullMath.concat(op);
+    displayFull.innerHTML = fullMath;
   }
 }
 
@@ -220,5 +234,7 @@ function clearAll() {
   operator = null;
   result = null;
   displayInput.innerText = " ";
+  fullMath = null;
+  displayFull.innerText = "";
   console.log("Clear All");
 }
