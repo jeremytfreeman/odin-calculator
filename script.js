@@ -27,10 +27,10 @@ const percentbtn = document.getElementById("percentbtn");
 const negbtn = document.getElementById("negativebtn");
 
 //other event handlers
-negbtn.addEventListener("click", () => handleNegInput());
+negbtn.addEventListener("click", handleNegInput);
 decbtn.addEventListener("click", () => handleNumInput("."));
-percentbtn.addEventListener("click", () => handlePercentInput());
-clearAllBtn.addEventListener("click", () => clearAll());
+percentbtn.addEventListener("click", handlePercentInput);
+clearAllBtn.addEventListener("click", clearAll);
 
 function addNums(num1, num2) {
   //convert strings to numbers
