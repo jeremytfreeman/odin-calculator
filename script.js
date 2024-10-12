@@ -8,63 +8,30 @@ let fullMath = null;
 const displayInput = document.getElementById("displayInput");
 const displayFull = document.getElementById("displayFull");
 
+//get all the number buttons and assign event handler
 const numBtn = document.querySelectorAll(".num");
-
-/*
-const btn1 = document.getElementById("btn1");
-const btn2 = document.getElementById("btn2");
-const btn3 = document.getElementById("btn3");
-const btn4 = document.getElementById("btn4");
-const btn5 = document.getElementById("btn5");
-const btn6 = document.getElementById("btn6");
-const btn7 = document.getElementById("btn7");
-const btn8 = document.getElementById("btn8");
-const btn9 = document.getElementById("btn9");
-const btn0 = document.getElementById("btn0");
-*/
-
-const decbtn = document.getElementById("decbtn");
-
-const clearAllBtn = document.getElementById("clearAll");
-const percentbtn = document.getElementById("percentbtn");
-const plusbtn = document.getElementById("plusbtn");
-const equalsbtn = document.getElementById("equalsbtn");
-const minusbtn = document.getElementById("minusbtn");
-const multbtn = document.getElementById("multbtn");
-const divbtn = document.getElementById("divbtn");
-const negbtn = document.getElementById("negativebtn");
-
-//add event handlers
 numBtn.forEach((button) => {
   button.addEventListener("click", () => handleNumInput(button.innerText));
 });
 
-/*
-btn1.addEventListener("click", () => handleNumInput("1"));
-btn2.addEventListener("click", () => handleNumInput("2"));
-btn3.addEventListener("click", () => handleNumInput("3"));
-btn4.addEventListener("click", () => handleNumInput("4"));
-btn5.addEventListener("click", () => handleNumInput("5"));
-btn6.addEventListener("click", () => handleNumInput("6"));
-btn7.addEventListener("click", () => handleNumInput("7"));
-btn8.addEventListener("click", () => handleNumInput("8"));
-btn9.addEventListener("click", () => handleNumInput("9"));
-btn0.addEventListener("click", () => handleNumInput("0"));
-decbtn.addEventListener("click", () => handleNumInput("."));
+//get basic operator buttons and assign event handler
+const opBtn = document.querySelectorAll(".op");
+opBtn.forEach((button) => {
+  button.addEventListener("click", () => handleOperatorInput(button.innerText));
+});
 
-*/
+const decbtn = document.getElementById("decbtn");
+const clearAllBtn = document.getElementById("clearAll");
+const percentbtn = document.getElementById("percentbtn");
+const negbtn = document.getElementById("negativebtn");
 
 //operator event handlers
-plusbtn.addEventListener("click", () => handleOperatorInput("+"));
-minusbtn.addEventListener("click", () => handleOperatorInput("-"));
-multbtn.addEventListener("click", () => handleOperatorInput("*"));
-divbtn.addEventListener("click", () => handleOperatorInput("/"));
-equalsbtn.addEventListener("click", () => handleOperatorInput("="));
 negbtn.addEventListener("click", () => handleNegInput());
+decbtn.addEventListener("click", () => handleNumInput("."));
 
 //percent button
 percentbtn.addEventListener("click", () => handlePercentInput());
-
+//clear all button
 clearAllBtn.addEventListener("click", () => clearAll());
 
 function addNums(num1, num2) {
@@ -99,7 +66,6 @@ function multiplyNums(num1, num2) {
   num2 = Number(num2);
   console.log(typeof num1 + num1);
   console.log(typeof num2 + num2);
-
   //do the operation, X each by 10 then divide for floating point accuracy
   result = (num1 * 10 * (num2 * 10)) / 100;
   console.log("x" + result);

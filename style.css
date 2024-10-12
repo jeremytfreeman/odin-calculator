@@ -58,11 +58,13 @@ h4 {
   font-weight: normal;
 }
 
-.op {
+.op,
+.other {
   background-color: lightgray;
 }
 
-.op:hover {
+.op:hover,
+.other:hover {
   background-color: lightseagreen;
 }
 
