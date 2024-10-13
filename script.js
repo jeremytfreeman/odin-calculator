@@ -39,9 +39,7 @@ function addNums(num1, num2) {
   //do the operation
   result = num1 + num2;
   //reset number variables
-  firstNum = null;
-  secondNum = null;
-  operator = null;
+  firstNum = secondNum = operator = null;
   return result;
 }
 
@@ -52,9 +50,7 @@ function subtractNums(num1, num2) {
   //do the operation
   result = num1 - num2;
   //reset number variables
-  firstNum = null;
-  secondNum = null;
-  operator = null;
+  firstNum = secondNum = operator = null;
   return result;
 }
 
@@ -68,9 +64,7 @@ function multiplyNums(num1, num2) {
   result = (num1 * 10 * (num2 * 10)) / 100;
   console.log("x" + result);
   //reset number variables
-  firstNum = null;
-  secondNum = null;
-  operator = null;
+  firstNum = secondNum = operator = null;
   return result;
 }
 
