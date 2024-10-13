@@ -143,7 +143,6 @@ function handleOperatorInput(op) {
     }
   } else {
     operator = op;
-    console.log("operator: " + operator);
     fullMath = fullMath.concat(op);
     updateDisplay();
   }
@@ -152,15 +151,16 @@ function handleOperatorInput(op) {
 //handles percent opertor
 function handlePercentInput() {
   if (secondNum == null) {
-    firstNum = parseInt(firstNum);
-    firstNum = firstNum / 100;
+    firstNum = parseFloat(firstNum) / 100;
     firstNum = firstNum.toString();
-    displayInput.innerHTML = firstNum;
+    fullMath = firstNum;
+    updateDisplay();
   } else {
     secondNum = parseInt(secondNum);
     secondNum = secondNum / 100;
     secondNum = secondNum.toString();
-    displayInput.innerHTML = secondNum;
+    fullMath = firstNum + operator + secondNum;
+    updateDisplay();
   }
 }
 
