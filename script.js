@@ -34,6 +34,8 @@ clearAllBtn.addEventListener("click", clearAll);
 
 function updateDisplay() {
   displayFull.innerHTML = fullMath;
+  displayInput.innerHTML =
+    secondNum !== null ? secondNum : firstNum !== null ? firstNum : "";
 }
 
 function addNums(num1, num2) {
@@ -87,7 +89,6 @@ function handleNumInput(num) {
       //f no previous result persists
       firstNum += num;
     }
-    displayInput.innerHTML = firstNum;
     fullMath = firstNum;
     updateDisplay();
     console.log("first number: " + firstNum);
@@ -96,12 +97,11 @@ function handleNumInput(num) {
     //if user has selected an operator create second number
     if (secondNum == null) {
       secondNum = num;
-      console.log("second num" + secondNum);
     } else if (secondNum !== null) {
       //append second number
       secondNum += num;
     }
-    displayInput.innerHTML = secondNum;
+    //displayInput.innerHTML = secondNum;
     fullMath = fullMath.concat(num);
     updateDisplay();
     console.log("second number: " + secondNum);
@@ -114,36 +114,31 @@ function handleOperatorInput(op) {
       if (operator == "+") {
         result = addNums(firstNum, secondNum);
         firstNum = result;
-        displayInput.innerHTML = result;
+        //displayInput.innerHTML = result;
         fullMath = fullMath.concat("=" + result);
         displayFull.innerHTML = fullMath;
         operator = null;
-        console.log("result " + result);
-        console.log(operator);
       } else if (operator == "-") {
         result = subtractNums(firstNum, secondNum);
         firstNum = result;
-        displayInput.innerHTML = result;
+        //displayInput.innerHTML = result;
         fullMath = fullMath.concat("=" + result);
         updateDisplay();
         operator = null;
-        console.log("result " + result);
       } else if (operator == "*") {
         result = multiplyNums(firstNum, secondNum);
         firstNum = result;
-        displayInput.innerHTML = result;
+        //displayInput.innerHTML = result;
         fullMath = fullMath.concat("=" + result);
         updateDisplay();
         operator = null;
-        console.log("result " + result);
       } else if (operator == "/") {
         result = divideNums(firstNum, secondNum);
         firstNum = result;
-        displayInput.innerHTML = result;
+        //displayInput.innerHTML = result;
         fullMath = fullMath.concat("=" + result);
         updateDisplay();
         operator = null;
-        console.log("result " + result);
       }
     }
   } else {
@@ -160,16 +155,12 @@ function handlePercentInput() {
     firstNum = parseInt(firstNum);
     firstNum = firstNum / 100;
     firstNum = firstNum.toString();
-    console.log("percentage " + firstNum);
     displayInput.innerHTML = firstNum;
-    console.log(typeof firstNum);
   } else {
     secondNum = parseInt(secondNum);
     secondNum = secondNum / 100;
     secondNum = secondNum.toString();
-    console.log("percentage " + secondNum);
     displayInput.innerHTML = secondNum;
-    console.log(typeof secondNum);
   }
 }
 
@@ -193,5 +184,5 @@ function handleNegInput() {
 function clearAll() {
   firstNum = secondNum = operator = result = fullMath = null;
   displayInput.innerText = "";
-  displayFull.innerText = "";
+  updateDisplay();
 }
