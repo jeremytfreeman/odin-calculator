@@ -76,7 +76,7 @@ function divideNums(num1, num2) {
 
 function handleNumInput(num) {
   if (operator === null || operator === "=") {
-    if (firstNum == null) {
+    if (firstNum === null) {
       if (num === ".") {
         firstNum = "0."; //ad zero before decimal if "." is first input
       } else {
@@ -123,29 +123,26 @@ function handleOperatorInput(op) {
         firstNum = result;
         //displayInput.innerHTML = result;
         fullMath = fullMath.concat("=" + result);
-        updateDisplay();
         operator = null;
       } else if (operator == "*") {
         result = multiplyNums(firstNum, secondNum);
         firstNum = result;
         //displayInput.innerHTML = result;
         fullMath = fullMath.concat("=" + result);
-        updateDisplay();
         operator = null;
       } else if (operator == "/") {
         result = divideNums(firstNum, secondNum);
         firstNum = result;
         //displayInput.innerHTML = result;
         fullMath = fullMath.concat("=" + result);
-        updateDisplay();
         operator = null;
       }
     }
   } else {
     operator = op;
     fullMath += op;
-    updateDisplay();
   }
+  updateDisplay();
 }
 
 //handles percent opertor
