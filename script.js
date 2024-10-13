@@ -38,40 +38,32 @@ function updateDisplay() {
     secondNum !== null ? secondNum : firstNum !== null ? firstNum : "";
 }
 
-function addNums(num1, num2) {
-  //do the operation
-  result = parseFloat(num1) + parseFloat(num2);
-  //reset number variables
-  firstNum = secondNum = operator = null;
-  return result;
-}
-
-function subtractNums(num1, num2) {
-  //do the operation
-  result = parseFloat(num1) - parseFloat(num2);
-  //reset number variables
-  firstNum = secondNum = operator = null;
-  return result;
-}
-
-function multiplyNums(num1, num2) {
-  //convert strings to numbers
-  num1 = parseFloat(num1);
-  num2 = parseFloat(num2);
-  //do the operation, X each by 10 then divide for floating point accuracy
-  result = (num1 * 10 * (num2 * 10)) / 100;
-  console.log("x" + result);
-  //reset number variables
-  firstNum = secondNum = operator = null;
-  return result;
-}
-
-function divideNums(num1, num2) {
-  //do the operation
-  result = parseFloat(num1) / parseFloat(num2);
-  //reset number variables
-  firstNum = secondNum = operator = null;
-  return result;
+function calculate(num1, num2, operator) {
+  switch (operator) {
+    case "+":
+      result = parseFloat(num1) + parseFloat(num2);
+      //reset number variables
+      firstNum = secondNum = operator = null;
+      return result;
+    case "-":
+      result = parseFloat(num1) - parseFloat(num2);
+      //reset number variables
+      firstNum = secondNum = operator = null;
+      return result;
+    case "*":
+      num1 = parseFloat(num1);
+      num2 = parseFloat(num2);
+      //do the operation, X each by 10 then divide for floating point accuracy
+      result = (num1 * 10 * (num2 * 10)) / 100;
+      //reset number variables
+      firstNum = secondNum = operator = null;
+      return result;
+    case "/":
+      result = parseFloat(num1) / parseFloat(num2);
+      //reset number variables
+      firstNum = secondNum = operator = null;
+      return result;
+  }
 }
 
 function handleNumInput(num) {
@@ -104,39 +96,16 @@ function handleNumInput(num) {
     //displayInput.innerHTML = secondNum;
     fullMath = fullMath.concat(num);
     updateDisplay();
-    console.log("second number: " + secondNum);
   }
 }
 
 function handleOperatorInput(op) {
   if (firstNum !== null && secondNum !== null) {
     if (op === "=") {
-      if (operator == "+") {
-        result = addNums(firstNum, secondNum);
-        firstNum = result;
-        //displayInput.innerHTML = result;
-        fullMath = fullMath.concat("=" + result);
-        displayFull.innerHTML = fullMath;
-        operator = null;
-      } else if (operator == "-") {
-        result = subtractNums(firstNum, secondNum);
-        firstNum = result;
-        //displayInput.innerHTML = result;
-        fullMath = fullMath.concat("=" + result);
-        operator = null;
-      } else if (operator == "*") {
-        result = multiplyNums(firstNum, secondNum);
-        firstNum = result;
-        //displayInput.innerHTML = result;
-        fullMath = fullMath.concat("=" + result);
-        operator = null;
-      } else if (operator == "/") {
-        result = divideNums(firstNum, secondNum);
-        firstNum = result;
-        //displayInput.innerHTML = result;
-        fullMath = fullMath.concat("=" + result);
-        operator = null;
-      }
+      result = calculate(firstNum, secondNum, operator);
+      fullMath = fullMath.concat("=" + result);
+      firstNum = result;
+      operator = null;
     }
   } else {
     operator = op;
@@ -160,7 +129,6 @@ function handlePercentInput() {
     secondNum = parseInt(secondNum);
     secondNum = secondNum / 100;
     secondNum = secondNum.toString();
-    console.log(fullMath);
   }
   updateDisplay();
 }
