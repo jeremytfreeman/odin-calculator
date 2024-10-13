@@ -34,8 +34,8 @@ clearAllBtn.addEventListener("click", clearAll);
 
 function addNums(num1, num2) {
   //convert strings to numbers
-  num1 = Number(num1);
-  num2 = Number(num2);
+  num1 = parseFloat(num1);
+  num2 = parseFloat(num2);
   //do the operation
   result = num1 + num2;
   //reset number variables
@@ -47,8 +47,8 @@ function addNums(num1, num2) {
 
 function subtractNums(num1, num2) {
   //convert strings to numbers
-  num1 = Number(num1);
-  num2 = Number(num2);
+  num1 = parseFloat(num1);
+  num2 = parseFloat(num2);
   //do the operation
   result = num1 - num2;
   //reset number variables
@@ -60,8 +60,8 @@ function subtractNums(num1, num2) {
 
 function multiplyNums(num1, num2) {
   //convert strings to numbers
-  num1 = Number(num1);
-  num2 = Number(num2);
+  num1 = parseFloat(num1);
+  num2 = parseFloat(num2);
   console.log(typeof num1 + num1);
   console.log(typeof num2 + num2);
   //do the operation, X each by 10 then divide for floating point accuracy
@@ -76,14 +76,12 @@ function multiplyNums(num1, num2) {
 
 function divideNums(num1, num2) {
   //convert strings to numbers
-  num1 = Number(num1);
-  num2 = Number(num2);
+  num1 = parseFloat(num1);
+  num2 = parseFloat(num2);
   //do the operation
   result = num1 / num2;
   //reset number variables
-  firstNum = null;
-  secondNum = null;
-  operator = null;
+  firstNum = secondNum = operator = null;
   return result;
 }
 
