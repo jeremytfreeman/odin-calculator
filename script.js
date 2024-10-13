@@ -206,12 +206,7 @@ function handleNegInput() {
 
 //clears the whole calculator
 function clearAll() {
-  firstNum = null;
-  secondNum = null;
-  operator = null;
-  result = null;
-  displayInput.innerText = " ";
-  fullMath = null;
+  firstNum = secondNum = operator = result = fullMath = null;
+  displayInput.innerText = "";
   displayFull.innerText = "";
-  console.log("Clear All");
 }
