@@ -143,7 +143,7 @@ function handleOperatorInput(op) {
     }
   } else {
     operator = op;
-    fullMath = fullMath.concat(op);
+    fullMath += op;
     updateDisplay();
   }
 }
@@ -154,30 +154,34 @@ function handlePercentInput() {
     firstNum = parseFloat(firstNum) / 100;
     firstNum = firstNum.toString();
     fullMath = firstNum;
-    updateDisplay();
-  } else {
+  } else if (result == null) {
     secondNum = parseInt(secondNum);
     secondNum = secondNum / 100;
     secondNum = secondNum.toString();
     fullMath = firstNum + operator + secondNum;
-    updateDisplay();
+  } else if (result !== null) {
+    secondNum = parseInt(secondNum);
+    secondNum = secondNum / 100;
+    secondNum = secondNum.toString();
+    console.log(fullMath);
   }
+  updateDisplay();
 }
 
 //handle +/- operator
 function handleNegInput() {
   if (firstNum === null) {
     firstNum = "-";
-    displayInput.innerHTML = firstNum;
-  } else if (secondNum == null) {
+    fullMath = firstNum;
+  } else if (secondNum === null) {
     firstNum = -firstNum;
+    fullMath = firstNum;
     console.log(firstNum);
-    displayInput.innerHTML = firstNum;
   } else {
     secondNum = -secondNum;
     console.log(secondNum);
-    displayInput.innerHTML = secondNum;
   }
+  updateDisplay();
 }
 
 //clears the whole calculator
