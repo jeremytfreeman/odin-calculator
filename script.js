@@ -33,6 +33,9 @@ percentbtn.addEventListener("click", handlePercentInput);
 clearAllBtn.addEventListener("click", clearAll);
 
 function updateDisplay() {
+  fullMath = `${firstNum || ""}${operator || ""}${secondNum || ""}${
+    result !== null ? "=" + result : ""
+  }`;
   displayFull.innerHTML = fullMath;
   displayInput.innerHTML =
     secondNum !== null ? secondNum : firstNum !== null ? firstNum : "";
@@ -42,12 +45,10 @@ function calculate(num1, num2, operator) {
   switch (operator) {
     case "+":
       result = parseFloat(num1) + parseFloat(num2);
-      //reset number variables
       firstNum = secondNum = operator = null;
       return result;
     case "-":
       result = parseFloat(num1) - parseFloat(num2);
-      //reset number variables
       firstNum = secondNum = operator = null;
       return result;
     case "*":
@@ -55,12 +56,11 @@ function calculate(num1, num2, operator) {
       num2 = parseFloat(num2);
       //do the operation, X each by 10 then divide for floating point accuracy
       result = (num1 * 10 * (num2 * 10)) / 100;
-      //reset number variables
       firstNum = secondNum = operator = null;
       return result;
     case "/":
+      console.log(num2);
       result = parseFloat(num1) / parseFloat(num2);
-      //reset number variables
       firstNum = secondNum = operator = null;
       return result;
   }
@@ -152,6 +152,7 @@ function handleNegInput() {
 //clears the whole calculator
 function clearAll() {
   firstNum = secondNum = operator = result = fullMath = null;
+  fullMath = null;
   displayInput.innerText = "";
   updateDisplay();
 }
