@@ -32,23 +32,21 @@ decbtn.addEventListener("click", () => handleNumInput("."));
 percentbtn.addEventListener("click", handlePercentInput);
 clearAllBtn.addEventListener("click", clearAll);
 
+function updateDisplay() {
+  displayFull.innerHTML = fullMath;
+}
+
 function addNums(num1, num2) {
-  //convert strings to numbers
-  num1 = parseFloat(num1);
-  num2 = parseFloat(num2);
   //do the operation
-  result = num1 + num2;
+  result = parseFloat(num1) + parseFloat(num2);
   //reset number variables
   firstNum = secondNum = operator = null;
   return result;
 }
 
 function subtractNums(num1, num2) {
-  //convert strings to numbers
-  num1 = parseFloat(num1);
-  num2 = parseFloat(num2);
   //do the operation
-  result = num1 - num2;
+  result = parseFloat(num1) - parseFloat(num2);
   //reset number variables
   firstNum = secondNum = operator = null;
   return result;
@@ -58,8 +56,6 @@ function multiplyNums(num1, num2) {
   //convert strings to numbers
   num1 = parseFloat(num1);
   num2 = parseFloat(num2);
-  console.log(typeof num1 + num1);
-  console.log(typeof num2 + num2);
   //do the operation, X each by 10 then divide for floating point accuracy
   result = (num1 * 10 * (num2 * 10)) / 100;
   console.log("x" + result);
@@ -69,11 +65,8 @@ function multiplyNums(num1, num2) {
 }
 
 function divideNums(num1, num2) {
-  //convert strings to numbers
-  num1 = parseFloat(num1);
-  num2 = parseFloat(num2);
   //do the operation
-  result = num1 / num2;
+  result = parseFloat(num1) / parseFloat(num2);
   //reset number variables
   firstNum = secondNum = operator = null;
   return result;
@@ -96,7 +89,7 @@ function handleNumInput(num) {
     }
     displayInput.innerHTML = firstNum;
     fullMath = firstNum;
-    displayFull.innerHTML = fullMath;
+    updateDisplay();
     console.log("first number: " + firstNum);
     console.log("result: " + result);
   } else {
@@ -110,7 +103,7 @@ function handleNumInput(num) {
     }
     displayInput.innerHTML = secondNum;
     fullMath = fullMath.concat(num);
-    displayFull.innerHTML = fullMath;
+    updateDisplay();
     console.log("second number: " + secondNum);
   }
 }
@@ -132,7 +125,7 @@ function handleOperatorInput(op) {
         firstNum = result;
         displayInput.innerHTML = result;
         fullMath = fullMath.concat("=" + result);
-        displayFull.innerHTML = fullMath;
+        updateDisplay();
         operator = null;
         console.log("result " + result);
       } else if (operator == "*") {
@@ -140,7 +133,7 @@ function handleOperatorInput(op) {
         firstNum = result;
         displayInput.innerHTML = result;
         fullMath = fullMath.concat("=" + result);
-        displayFull.innerHTML = fullMath;
+        updateDisplay();
         operator = null;
         console.log("result " + result);
       } else if (operator == "/") {
@@ -148,7 +141,7 @@ function handleOperatorInput(op) {
         firstNum = result;
         displayInput.innerHTML = result;
         fullMath = fullMath.concat("=" + result);
-        displayFull.innerHTML = fullMath;
+        updateDisplay();
         operator = null;
         console.log("result " + result);
       }
@@ -157,7 +150,7 @@ function handleOperatorInput(op) {
     operator = op;
     console.log("operator: " + operator);
     fullMath = fullMath.concat(op);
-    displayFull.innerHTML = fullMath;
+    updateDisplay();
   }
 }
 
