@@ -76,7 +76,8 @@ function handleNumInput(num) {
       firstNum = num === "." ? "0." : num;
     } else if (result !== null) {
       //if previous result persists
-      firstNum = result;
+      firstNum = num === "." && !firstNum.includes(".") ? firstNum + num : num;
+      result = null;
     } else if (firstNum !== null && result == null) {
       //check if num already has decimal
       if (num === "." && firstNum.includes(".")) return;
