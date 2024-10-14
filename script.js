@@ -71,9 +71,10 @@ function calculate(num1, num2, operator) {
 
 function handleNumInput(num) {
   if (operator === null || operator === "=") {
+    //logic to add first number
     if (firstNum === null) {
       if (num === ".") {
-        firstNum = "0."; //ad zero before decimal if "." is first input
+        firstNum = "0."; //add zero before decimal if "." is first input
       } else {
         firstNum = num;
       }
