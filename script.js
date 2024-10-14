@@ -133,7 +133,7 @@ function handlePercentInput() {
     secondNum = parseInt(secondNum);
     secondNum = secondNum / 100;
     secondNum = secondNum.toString();
-    fullMath = firstNum + operator + secondNum;
+    fullMath = `${firstNum} ${operator || ""} ${secondNum} = ${result}`.trim();
   } else if (result !== null) {
     secondNum = parseInt(secondNum);
     secondNum = secondNum / 100;
@@ -153,6 +153,7 @@ function handleNegInput() {
     console.log(firstNum);
   } else {
     secondNum = -secondNum;
+    fullMath = `${firstNum || ""} ${operator || ""} ${secondNum || ""}`;
     console.log(secondNum);
   }
   updateDisplay();
