@@ -33,12 +33,19 @@ percentbtn.addEventListener("click", handlePercentInput);
 clearAllBtn.addEventListener("click", clearAll);
 
 function updateDisplay() {
-  fullMath = `${firstNum || ""}${operator || ""}${secondNum || ""}${
+  /*fullMath = `${firstNum || ""}${operator || ""}${secondNum || ""}${
     result !== null ? "=" + result : ""
-  }`;
+  }`; */
+
   displayFull.innerHTML = fullMath;
   displayInput.innerHTML =
-    secondNum !== null ? secondNum : firstNum !== null ? firstNum : "";
+    result !== null
+      ? result
+      : secondNum !== null
+      ? secondNum
+      : firstNum !== null
+      ? firstNum
+      : "";
 }
 
 function calculate(num1, num2, operator) {
@@ -74,9 +81,10 @@ function handleNumInput(num) {
       } else {
         firstNum = num;
       }
-    } else if (firstNum !== null && result !== null) {
+    } else if (result !== null) {
       //if previous result persists
-      firstNum = num;
+      firstNum = result;
+      console.log("firstnum: " + firstNum);
     } else if (firstNum !== null && result == null) {
       //f no previous result persists
       firstNum += num;
@@ -100,16 +108,18 @@ function handleNumInput(num) {
 }
 
 function handleOperatorInput(op) {
-  if (firstNum !== null && secondNum !== null) {
-    if (op === "=") {
-      result = calculate(firstNum, secondNum, operator);
-      fullMath = fullMath.concat("=" + result);
-      firstNum = result;
-      operator = null;
-    }
-  } else {
+  if (firstNum !== null && secondNum !== null && operator !== "=") {
+    // Perform calculation if both numbers and an operator are present
+    result = calculate(firstNum, secondNum, operator);
+    fullMath = `${firstNum} ${operator} ${secondNum} = ${result}`;
+    firstNum = result;
+    secondNum = operator = null;
+  } else if (firstNum !== null) {
+    // Set operator if the first number is present
     operator = op;
-    fullMath += op;
+    if (op !== "=") {
+      fullMath = `${firstNum} ${operator}`;
+    }
   }
   updateDisplay();
 }
