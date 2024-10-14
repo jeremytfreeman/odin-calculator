@@ -52,23 +52,19 @@ function calculate(num1, num2, operator) {
   switch (operator) {
     case "+":
       result = parseFloat(num1) + parseFloat(num2);
-      firstNum = secondNum = operator = null;
       return result;
     case "-":
       result = parseFloat(num1) - parseFloat(num2);
-      firstNum = secondNum = operator = null;
       return result;
     case "*":
       num1 = parseFloat(num1);
       num2 = parseFloat(num2);
       //do the operation, X each by 10 then divide for floating point accuracy
       result = (num1 * 10 * (num2 * 10)) / 100;
-      firstNum = secondNum = operator = null;
       return result;
     case "/":
       console.log(num2);
       result = parseFloat(num1) / parseFloat(num2);
-      firstNum = secondNum = operator = null;
       return result;
   }
 }
@@ -102,24 +98,27 @@ function handleNumInput(num) {
       secondNum += num;
     }
     //displayInput.innerHTML = secondNum;
-    fullMath = fullMath.concat(num);
-    updateDisplay();
+    fullMath = `${firstNum || ""} ${operator || ""} ${secondNum || ""}`;
   }
+  updateDisplay();
 }
 
 function handleOperatorInput(op) {
-  if (firstNum !== null && secondNum !== null && operator !== "=") {
-    // Perform calculation if both numbers and an operator are present
+  if (firstNum !== null && secondNum !== null) {
     result = calculate(firstNum, secondNum, operator);
-    fullMath = `${firstNum} ${operator} ${secondNum} = ${result}`;
+    fullMath = `${firstNum} ${operator || ""} ${secondNum} = ${result}`.trim();
+    console.log(fullMath);
     firstNum = result;
-    secondNum = operator = null;
-  } else if (firstNum !== null) {
-    // Set operator if the first number is present
-    operator = op;
+    secondNum = null;
     if (op !== "=") {
-      fullMath = `${firstNum} ${operator}`;
+      operator = op;
+      fullMath = `${firstNum} ${operator}`.trim();
+    } else {
+      operator = null;
     }
+  } else if (firstNum !== null) {
+    operator = op;
+    fullMath = `${firstNum} ${operator || ""}`.trim();
   }
   updateDisplay();
 }
