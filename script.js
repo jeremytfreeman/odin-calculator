@@ -77,8 +77,9 @@ function handleNumInput(num) {
     } else if (result !== null) {
       //if previous result persists
       firstNum = result;
-      console.log("firstnum: " + firstNum);
     } else if (firstNum !== null && result == null) {
+      //check if num already has decimal
+      if (num === "." && firstNum.includes(".")) return;
       //f no previous result persists
       firstNum += num;
     }
