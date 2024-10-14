@@ -73,11 +73,7 @@ function handleNumInput(num) {
   if (operator === null || operator === "=") {
     //logic to add first number
     if (firstNum === null) {
-      if (num === ".") {
-        firstNum = "0."; //add zero before decimal if "." is first input
-      } else {
-        firstNum = num;
-      }
+      firstNum = num === "." ? "0." : num;
     } else if (result !== null) {
       //if previous result persists
       firstNum = result;
