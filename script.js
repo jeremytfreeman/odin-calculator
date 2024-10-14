@@ -90,8 +90,9 @@ function handleNumInput(num) {
   } else {
     //if user has selected an operator create second number
     if (secondNum == null) {
-      secondNum = num;
+      secondNum = num === "." ? "0." : num;
     } else if (secondNum !== null) {
+      if (num === "." && secondNum.includes(".")) return;
       //append second number
       secondNum += num;
     }
